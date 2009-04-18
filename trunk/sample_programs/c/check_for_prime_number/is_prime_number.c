@@ -41,10 +41,12 @@ unsigned short is_prime_number(const int number)
 
     /* Trivial case 1: number 1, 0 numbers are not prime numbers */
     /* -ve numbers are not natural numbers */
-    if (number <= 1) return 0;
+    if (number <= 1)
+        return 0;
 
     /* Trivial case 2: even numbers are not prime numbers */
-    if (number % 2 == 0) return (number == 2) ? 1 : 0;
+    if (number % 2 == 0)
+        return (number == 2) ? 1 : 0;
 
     /* here, number is is odd and number >= 3 */
 
