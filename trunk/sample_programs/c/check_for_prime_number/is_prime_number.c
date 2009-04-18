@@ -49,7 +49,6 @@ unsigned short is_prime_number(const int number)
         return (number == 2) ? 1 : 0;
 
     /* here, number is is odd and number >= 3 */
-
     /* Try to divide number by every odd number i, starting from 3 */
     for (i = 3; ; i += 2) {
         /* We only have to try i up to the squre root of number */
