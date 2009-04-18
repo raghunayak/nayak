@@ -53,11 +53,13 @@ unsigned short is_prime_number(const int number)
     /* Try to divide number by every odd number i, starting from 3 */
     for (i = 3; ; i += 2) {
         /* We only have to try i up to the squre root of number */
-        if (i > number/i) break;
+        if (i > number/i)
+            break;
 
         /* Now, we have i <= number/i < number */
         /* If number is divisible by i, number is not prime */
-        if (number % i == 0) return 0;
+        if (number % i == 0)
+            return 0;
     }
     /* number has no integer factor in the range (1, number), and thus is prime */
     return 1;
