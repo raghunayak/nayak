@@ -20,34 +20,37 @@
  * THE SOFTWARE.
  */
 
-/* C program to generate and print first n fibonacci numbers. */
+/* C program to reverse an integer and to check whether it is an palindrome. */
 
 #include <stdio.h>
 
 int main()
 {
-    int max_count;
-    int f1 = 0, f2 = 1, f3;
-    int i;
+    int number;
+    int reversed_number;
+    int temp_number, reminder;
 
-    printf("\nEnter the number: ");
-    scanf("%d", &max_count);
+    printf("\nPlease enter an integer number: ");
+    scanf("%d", &number);
 
-    printf("\nFirst %d fibonacci numbers are..\n", max_count);
+    temp_number = number;
+    reversed_number = 0;
 
-    if (max_count >= 1)
-        printf("%d  ", f1);
+    while(temp_number > 0) {
+        reminder = temp_number % 10;
 
-    if (max_count >= 2)
-        printf("  %d  ", f2);
+        temp_number /= 10;
 
-    for (i = 3; i <= max_count; ++i) {
-        f3 = f1 + f2;
-        printf("  %d  ", f3);
-
-        f1 = f2;
-        f2 = f3;
+        reversed_number = reversed_number * 10 + reminder;
     }
-    printf("\n");
+    printf("\nEntered numbers is: %d, Reversed number is: %d", number, reversed_number);
+
+    if (number == reversed_number) {
+        printf("\nSince %d = %d, Entered number %d is an Palindrome number.\n",
+               number, reversed_number, number);
+    } else {
+        printf("\nSince %d != %d, Entered number %d is not an Palindrome number.\n",
+               number, reversed_number, number);
+    }
     return 0;
 }
