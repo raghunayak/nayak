@@ -15,6 +15,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+ * C program to reverse given string, and to check whether it is a palindrome.
+ */
+
 #include <stdio.h>
 #include <string.h>
 
