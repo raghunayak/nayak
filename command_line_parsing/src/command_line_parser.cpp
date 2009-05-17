@@ -15,10 +15,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+namespace cli {
+
 #include "command_line_parser.h"
 #include "debug_helper.h"
 
 #include <iostream>
+
+////////////////////////////////////////////////////////////////////////////////
 
 command_line_parser::command_line_parser()
 {
@@ -26,13 +30,19 @@ command_line_parser::command_line_parser()
     init();
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
 // parameterized constructor
 command_line_parser::command_line_parser(int argc, char *argv[])
 {
     init();
-
     m_args = argc;
+
+    if (m_auto_parse)
+        parse();
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 command_line_parser::~command_line_parser()
 {
@@ -48,6 +58,8 @@ void command_line_parser::set_help_string(const std::string &help_msg)
     m_help_string = help_msg;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
 // Method to add the new help string to the end of the current help string.
 void command_line_parser::add_help_string(const std::string &help_msg)
 {
@@ -55,36 +67,27 @@ void command_line_parser::add_help_string(const std::string &help_msg)
     m_help_string += help_msg;
 }
 
-// returns the help string.
-std::string command_line_parser::get_help(void)
-{
-    return m_help_string;
-}
+////////////////////////////////////////////////////////////////////////////////
 
 // Method to show help. Help will be shown to the device given.
 void command_line_parser::show_help(device_name device)
 {
-    switch(device)
-    {
-    case STDERR:
-        {
+    switch(device) {
+    case STDERR: {
             std::cerr<<m_help_string;
             std::cerr.flush();
         }
         break;
-    case STDOUT:
-        {
+    case STDOUT: {
             std::cout<<m_help_string;
             std::cout.flush();
         }
         break;
-    case FILEOUT:
-        {
+    case FILEOUT: {
             fixme_str("FILEOUT support");
         }
         break;
-    default:
-        {
+    default: {
             debug_str("Unknown device given");
         }
         break;
@@ -96,6 +99,21 @@ void command_line_parser::show_help(device_name device)
 void command_line_parser::init(void)
 {
     m_args = 0;
+
+    // automatically parse the inputs
+    m_auto_parse = true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+
+// to set the given keyword
+void command_line_parser::set_keyword(std::wstring keyword)
+{
+    // enter the given keyword into the std::map
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+};
