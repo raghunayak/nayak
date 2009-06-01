@@ -1,0 +1,515 @@
+coding_guidelines.txt
+
+Note: Please follow this strictly.
+
+C/C++ Coding Style Guidelines
+
+Indentation
+
+   1. Use spaces, not tabs. Tabs should only appear in files that require them for semantic meaning, like Makefiles.
+   2. The indent size is 4 spaces.
+      Right:
+
+      int main()
+      {
+          return 0;
+      }
+
+      Wrong:
+
+      int main()
+      {
+              return 0;
+      }
+
+   3. In a header, code inside a namespace should be indented.
+      Right:
+
+      // Document.h
+      namespace WebCore {
+
+          class Document {
+              Document();
+              ...
+          };
+
+      } // namespace WebCore
+
+      Wrong:
+
+      // Document.h
+      namespace WebCore {
+
+      class Document {
+          Document();
+          ...
+      };
+
+      } // namespace WebCore
+
+   4. In an implementation file (files with the extension .cpp, .c or .mm), code inside a namespace should not be indented.
+      Right:
+
+      // Document.cpp
+      namespace WebCore {
+
+      Document::Document()
+      {
+          ...
+      }
+
+      } // namespace WebCore
+
+      Wrong:
+
+      // Document.cpp
+      namespace WebCore {
+
+          Document::Document()
+          {
+              ...
+          }
+
+      } // namespace WebCore
+
+   5. A case label should line up with its switch statement. The case statement is indented.
+      Right:
+
+      switch (condition) {
+      case fooCondition:
+      case barCondition:
+          i++;
+          break;
+      default:
+          i--;
+      }
+
+      Wrong:
+
+      switch (condition) {
+          case fooCondition:
+          case barCondition:
+              i++;
+              break;
+          default:
+              i--;
+      }
+
+   6. Boolean expressions at the same nesting level that span multiple lines should have their operators on the left side of the line instead of the right side.
+      Right:
+
+      return attr->name() == srcAttr
+          || attr->name() == lowsrcAttr
+          || (attr->name() == usemapAttr && attr->value().domString()[0] != '#');
+
+      Wrong:
+
+      return attr->name() == srcAttr ||
+          attr->name() == lowsrcAttr ||
+          (attr->name() == usemapAttr && attr->value().domString()[0] != '#');
+
+Spacing
+
+   1. Do not place spaces around unary operators.
+      Right:
+
+      i++;
+
+      Wrong:
+
+      i ++;
+
+   2. Do place spaces around binary and ternary operators.
+      Right:
+
+      y = m * x + b;
+      f(a, b);
+      c = a | b;
+      return condition ? 1 : 0;
+
+      Wrong:
+
+      y=m*x+b;
+      f(a,b);
+      c = a|b;
+      return condition ? 1:0;
+
+   3. Place spaces between control statements and their parentheses.
+      Right:
+
+      if (condition)
+          doIt();
+
+      Wrong:
+
+      if(condition)
+          doIt();
+
+   4. Do not place spaces between a function and its parentheses, or between a parenthesis and its content.
+      Right:
+
+      f(a, b);
+
+      Wrong:
+
+      f (a, b);
+      f( a, b );
+
+Line breaking
+
+   1. Each statement should get its own line.
+      Right:
+
+      x++;
+      y++;
+      if (condition)
+          doIt();
+
+      Wrong:
+
+      x++; y++;
+      if (condition) doIt();
+
+   2. An else statement should go on the same line as a preceding close brace.
+      Right:
+
+      if (condition) {
+          ...
+      } else {
+          ...
+      }
+
+      Wrong:
+
+      if (condition) {
+          ...
+      }
+      else {
+          ...
+      }
+
+   3. An else if statement should be written as an if statement when the prior if concludes with a return statement.
+      Right:
+
+      if (condition) {
+          ...
+          return someValue;
+      }
+      if (condition) {
+          ...
+      }
+
+      Wrong:
+
+      if (condition) {
+          ...
+          return someValue;
+      } else if (condition) {
+          ...
+      }
+
+Braces
+
+   1. Function definitions: place each brace on its own line.
+      Right:
+
+      int main()
+      {
+          ...
+      }
+
+      Wrong:
+
+      int main() {
+          ...
+      }
+
+   2. Other braces: place the open brace on the line preceding the code block; place the close brace on its own line.
+      Right:
+
+      class MyClass {
+          ...
+      };
+
+      namespace WebCore {
+          ...
+      }
+
+      for (int i = 0; i < 10; i++) {
+          ...
+      }
+
+      Wrong:
+
+      class MyClass
+      {
+          ...
+      };
+
+   3. One-line control clauses should not use braces
+      Right:
+
+      if (condition)
+          doIt();
+
+      Wrong:
+
+      if (condition) {
+          doIt();
+      }
+
+   4. Control clauses without a body should use empty braces:
+      Right:
+
+      for ( ; current; current = current->next) { }
+
+      Wrong:
+
+      for ( ; current; current = current->next);
+
+Null, false and 0
+
+   1. In C++, the null pointer value should be written as 0. In C, it should be written as NULL. In Objective-C and Objective-C++, follow the guideline for C or C++, respectively, but use nil to represent a null Objective-C object.
+   2. C++ and C bool values should be written as true and false. Objective-C BOOL values should be written as YES and NO.
+   3. Tests for true/false, null/non-null, and zero/non-zero should all be done without equality comparisons.
+      Right:
+
+      if (condition)
+          doIt();
+
+      if (!ptr)
+          return;
+
+      if (!count)
+          return;
+
+      Wrong:
+
+      if (condition == true)
+          doIt();
+
+      if (ptr == NULL)
+          return;
+
+      if (count == 0)
+          return;
+
+   4. In Objective-C, instance variables are initialized to zero automatically. Don't add explicit initializations to nil or NO in an init method.
+
+Names
+
+   1. Use CamelCase. Capitalize the first letter, including all letters in an acronym, in a class, struct, protocol, or namespace name. Lower-case the first letter, including all letters in an acronym, in a variable or function name.
+      Right:
+
+      struct Data;
+      size_t bufferSize;
+      class HTMLDocument;
+      String mimeType();
+
+      Wrong:
+
+      struct data;
+      size_t buffer_size;
+      class HtmlDocument;
+      String MIMEType();
+
+   2. Use full words, except in the rare case where an abbreviation would be more canonical and easier to understand.
+      Right:
+
+      size_t characterSize;
+      size_t length;
+      short tabIndex; // more canonical
+
+      Wrong:
+
+      size_t charSize;
+      size_t len;
+      short tabulationIndex; // bizarre
+
+   3. Prefix C++ data members with "m_".
+      Right:
+
+      class String {
+          ...
+          short m_length;
+      };
+
+      Wrong:
+
+      class String {
+          ...
+          short length;
+      };
+
+   4. Prefix Objective-C instance variables with "_".
+      Right:
+
+      @class String
+          ...
+          short _length;
+      @end
+
+      Wrong:
+
+      @class String
+          ...
+          short length;
+      @end
+
+   5. Precede boolean values with words like "is" and "did".
+      Right:
+
+      bool isValid;
+      bool didSendData;
+
+      Wrong:
+
+      bool valid;
+      bool sentData;
+
+   6. Precede setters with the word "set". Use bare words for getters. Setter and getter names should match the names of the variables being set/gotten.
+      Right:
+
+      void setCount(size_t); // sets m_count
+      size_t count(); // returns m_count
+
+      Wrong:
+
+      void setCount(size_t); // sets m_theCount
+      size_t getCount();
+
+   7. Use descriptive verbs in function names.
+      Right:
+
+      bool convertToASCII(short*, size_t);
+
+      Wrong:
+
+      bool toASCII(short*, size_t);
+
+   8. Leave meaningless variable names out of function declarations.
+      Right:
+
+      void setCount(size_t);
+
+      Wrong:
+
+      void setCount(size_t count);
+
+   9. Objective-C method names should follow the Cocoa naming guidelines — they should read like a phrase and each piece of the selector should start with a lowercase letter and use intercaps.
+  10. Enum members should user InterCaps with an initial capital letter.
+  11. Prefer const to #define. Prefer inline functions to macros.
+  12. #defined constants should use all uppercase names with words separated by underscores.
+  13. Macros that expand to function calls or other non-constant computation: these should be named like functions, and should have parentheses at the end, even if they take no arguments (with the exception of some special macros like ASSERT). Note that usually it is preferable to use an inline function in such cases instead of a macro.
+      Right:
+
+      #define WBStopButtonTitle() \
+              NSLocalizedString(@"Stop", @"Stop button title")
+
+      Wrong:
+
+      #define WB_STOP_BUTTON_TITLE \
+              NSLocalizedString(@"Stop", @"Stop button title")
+
+      #define WBStopButtontitle \
+              NSLocalizedString(@"Stop", @"Stop button title")
+
+  14. #define, #ifdef "header guards" should be named exactly the same as the file (including case), replacing the '.' with a '_'.
+      Right:
+
+      // HTMLDocument.h
+      #ifndef HTMLDocument_h
+      #define HTMLDocument_h
+
+      Wrong:
+
+      // HTMLDocument.h
+      #ifndef _HTML_DOCUMENT_H_
+      #define _HTML_DOCUMENT_H_
+
+Other Punctuation
+
+   1. Constructors for C++ classes should initialize all of their members using C++ initializer syntax. Each member (and superclass) should be indented on a separate line, with the colon or comma preceding the member on that line.
+      Right:
+
+      MyClass::MyClass(Document* doc)
+          : MySuperClass()
+          , m_myMember(0)
+          , m_doc(doc)
+      {
+      }
+
+      MyOtherClass::MyOtherClass()
+          : MySuperClass()
+      {
+      }
+
+      Wrong:
+
+      MyClass::MyClass(Document* doc) : MySuperClass()
+      {
+          m_myMember = 0;
+          m_doc = doc;
+      }
+
+      MyOtherClass::MyOtherClass() : MySuperClass() {}
+
+   2. Pointer types in non-C++ code — Pointer types should be written with a space between the type and the * (so the * is adjacent to the following identifier if any).
+   3. Pointer and reference types in C++ code — Both pointer types and reference types should be written with no space between the type name and the * or &.
+      Right:
+
+      Image* SVGStyledElement::doSomething(PaintInfo& paintInfo)
+      {
+          SVGStyledElement* element = static_cast<SVGStyledElement*>(node());
+          const KCDashArray& dashes = dashArray();
+
+      Wrong:
+
+      Image *SVGStyledElement::doSomething(PaintInfo &paintInfo)
+      {
+          SVGStyledElement *element = static_cast<SVGStyledElement *>(node());
+          const KCDashArray &dashes = dashArray();
+
+#include Statements
+
+   1. All implementation files must #include "config.h" first. Header files should never include "config.h".
+      Right:
+
+      // RenderLayer.h
+      #include "Node.h"
+      #include "RenderObject.h"
+      #include "RenderView.h"
+
+      Wrong:
+
+      // RenderLayer.h
+      #include "config.h"
+
+      #include "RenderObject.h"
+      #include "RenderView.h"
+      #include "Node.h"
+
+   2. All implementation files must #include the primary header second, just after "config.h". So for example, Node.cpp should include Node.h first, before other files. This guarantees that each header's completeness is tested. This also assures that each header can be compiled without requiring any other header files be included first.
+   3. Other #include statements should be in sorted order (case sensitive, as done by the command-line sort tool or the Xcode sort selection command). Don't bother to organize them in a logical order.
+      Right:
+
+      // HTMLDivElement.cpp
+      #include "config.h"
+      #include "HTMLDivElement.h"
+
+      #include "Attribute.h"
+      #include "HTMLElement.h"
+      #include "QualifiedName.h"
+
+
+      Wrong:
+
+      // HTMLDivElement.cpp
+      #include "HTMLElement.h"
+      #include "HTMLDivElement.h"
+      #include "QualifiedName.h"
+      #include "Attribute.h"
+
+Use Doxygen code block comments for commenting.
+
+Put the comments in the implementation file rather than the header file.
