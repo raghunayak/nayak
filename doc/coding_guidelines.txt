@@ -513,3 +513,7 @@ Other Punctuation
 Use Doxygen code block comments for commenting.
 
 Put the comments in the implementation file rather than the header file.
+
+C Language specific notes:
+
+use underscore (_) to separate the words. Avoid the use of camelCase.
