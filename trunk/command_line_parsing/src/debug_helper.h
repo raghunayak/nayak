@@ -22,18 +22,18 @@
 #define MY_VOID_CAST static_cast<void>
 #else
 #define MY_VOID_CAST (void)
-#endif // #if defined __cplusplus && __GNUC_PREREQ (2,95)
+#endif /* #if defined __cplusplus && __GNUC_PREREQ (2,95) */
 
 #ifdef NDEBUG
-#define debug_str(string)
-#define fixme_str(string)
+#define debug_str(string) MY_VOID_CAST
+#define fixme_str(string) MY_VOID_CAST
 #else
 
 #include <stdio.h>
 
 /**
  * @brief function to output the Debug string to the stderr device.
- * @param string the Debug error string.
+ * @param[in] string the Debug error string.
  * @return none.
  */
 void debug_str(const char *string)
@@ -43,8 +43,8 @@ void debug_str(const char *string)
 }
 
 /**
- * @brief function to output the FixMe string.
- * @param string the FixMe error string.
+ * @brief function to output the FixMe string to the stderr device.
+ * @param[in] string the FixMe error string.
  * @return none.
  */
 void fixme_str(const char *string)

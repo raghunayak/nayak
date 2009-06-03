@@ -15,10 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "command_line_parser.h"
+#include "commandlineparser.h"
 
 int main(int argc, char *argv[])
 {
+    Cli::CommandLineParser parser;
+
+    parser.setStyle("Unix");
+    /*
+      The usage scenarios of the command_line_parser.
+
     command_line_parser parser(argc, argv);
 
     parser.set_style("unix");
@@ -76,6 +82,8 @@ int main(int argc, char *argv[])
             break;
         }
     }
+
+    */
 
     return 0;
 }

@@ -15,12 +15,43 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace cli {
-
-#include "command_line_parser.h"
+#include "commandlineparser.h"
 #include "debug_helper.h"
 
-#include <iostream>
+UseCliNamespace
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// @brief the method to set the parameter style.
+/// @param style the parameter style name.
+/// @return none.
+void CommandLineParser::setStyle(std::string style)
+{
+    /// @todo PENDING implementation.
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -117,3 +148,4 @@ void command_line_parser::set_keyword(std::wstring keyword)
 ////////////////////////////////////////////////////////////////////////////////
 
 };
+*/
