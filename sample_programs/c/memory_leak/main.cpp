@@ -45,7 +45,6 @@ int main()
       leak_memory(sizeof(int));
       before = after;
    }
-
    return EXIT_SUCCESS;
 }
 
