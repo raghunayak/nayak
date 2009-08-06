@@ -26,23 +26,27 @@ bool hasOpenGLExtension(const char *extensionName)
     const GLubyte *start;
     GLubyte *where, *terminator;
 
-    // Check if the requested extension name is given as empty string.
+    /* Check if the requested extension name is given as empty string. */
     if (*extension_name == '\0')
         return false;
 
-    // Check if the requested extension name contains any spaces
+    /* Check if the requested extension name contains any spaces */
     if (where = (GLubyte *) strchr(extension_name, ' '))
         return false;
 
-    // get the list of available OpenGL extensions
+    /* get the list of available OpenGL extensions */
     extensions = glGetString(GL_EXTENSIONS);
+
+    /* check if extensions are returned properly */
+    if (!extensions)
+       return false;
 
     start = extensions;
 
     for (;;) {
         where = (GLubyte *) strstr((const char *) start, extension_name);
 
-        // if the given extension name is not found
+        /* if the given extension name is not found */
         if (!where)
             break;
 
