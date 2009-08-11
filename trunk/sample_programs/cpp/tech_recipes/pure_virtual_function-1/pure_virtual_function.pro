@@ -6,7 +6,7 @@
 
 QT       -= core gui
 
-TARGET = virtual_function
+TARGET = pure_virtual_function
 CONFIG   += console
 CONFIG   -= app_bundle
 
