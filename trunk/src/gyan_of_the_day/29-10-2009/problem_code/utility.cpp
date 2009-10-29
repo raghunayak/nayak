@@ -15,32 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// sample to the std::string empty behavior
+#include "utility.h"
 
-#include <string>
-#include <iostream>
+using namespace utility;
 
-int main(void)
-{
-   std::string nullString;
-   std::string emptyString("");
-
-   if (nullString.empty())
-   {
-      std::cout<<"\nThe nullString string is empty.\n";
-   }
-   else
-   {
-      std::cout<<"\nThe nullString string is not empty.\n";
-   }
-
-   if (emptyString.empty())
-   {
-      std::cout<<"\nThe emptyString string is empty.\n";
-   }
-   else
-   {
-      std::cout<<"\nThe emptyString string is not empty.\n";
-   }
-   return EXIT_SUCCESS;
+// Function to find the square of a number.
+unsigned int getSquare(int number) {
+        return number * number;
 }

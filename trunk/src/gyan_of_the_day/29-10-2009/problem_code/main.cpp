@@ -15,32 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// sample to the std::string empty behavior
+// The C++ Gyan of the day application for the day 29-Oct-2009.
+//
+// This application is about the c-style functions inside the namespace.
 
-#include <string>
+////////////////////////////////////////////////////////////////////////////////
+
 #include <iostream>
+#include <cstdlib>
 
-int main(void)
+#include <utility.h>
+
+using namespace utility;
+
+////////////////////////////////////////////////////////////////////////////////
+
+int main(int /*argc*/, char */*argv*/[])
 {
-   std::string nullString;
-   std::string emptyString("");
 
-   if (nullString.empty())
-   {
-      std::cout<<"\nThe nullString string is empty.\n";
-   }
-   else
-   {
-      std::cout<<"\nThe nullString string is not empty.\n";
-   }
+    std::cout<<"\nThe sqaure of 5 is "<<getSquare(5);
 
-   if (emptyString.empty())
-   {
-      std::cout<<"\nThe emptyString string is empty.\n";
-   }
-   else
-   {
-      std::cout<<"\nThe emptyString string is not empty.\n";
-   }
-   return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
+
+////////////////////////////////////////////////////////////////////////////////
