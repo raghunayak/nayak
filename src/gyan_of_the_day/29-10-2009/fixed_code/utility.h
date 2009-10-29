@@ -15,32 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// sample to the std::string empty behavior
+#ifndef UTILITY_H
+#define UTILITY_H
 
-#include <string>
-#include <iostream>
+// Begin the namespace utility
+namespace utility {
 
-int main(void)
-{
-   std::string nullString;
-   std::string emptyString("");
-
-   if (nullString.empty())
-   {
-      std::cout<<"\nThe nullString string is empty.\n";
-   }
-   else
-   {
-      std::cout<<"\nThe nullString string is not empty.\n";
-   }
-
-   if (emptyString.empty())
-   {
-      std::cout<<"\nThe emptyString string is empty.\n";
-   }
-   else
-   {
-      std::cout<<"\nThe emptyString string is not empty.\n";
-   }
-   return EXIT_SUCCESS;
+    /// @brief Function to find the square of a number.
+    /// @param number The input number of which aquare is needed.
+    /// @return The square of the input number.
+    unsigned int getSquare(int number);
 }
+
+#endif // UTILITY_H

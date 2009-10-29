@@ -37,6 +37,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 // This is an Abstract base class for Bank Accounts.
 class BankAccount {
@@ -82,5 +83,5 @@ int main(void)
     std::cout<<"\nThe savings bank account number is \""
              <<account.getAccountNumber()<<"\".";
 
-    return 0;
+    return EXIT_SUCCESS;
 }
