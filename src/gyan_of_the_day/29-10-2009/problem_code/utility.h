@@ -18,6 +18,8 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
+////////////////////////////////////////////////////////////////////////////////
+
 // Begin the namespace utility
 namespace utility {
 
@@ -26,5 +28,7 @@ namespace utility {
     /// @return The square of the input number.
     unsigned int getSquare(int number);
 }
+
+////////////////////////////////////////////////////////////////////////////////
 
 #endif // UTILITY_H
