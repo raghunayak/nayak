@@ -19,12 +19,23 @@
 
 #include <string>
 #include <iostream>
+#include <QApplication>
 
-int main(int /*argc*/, char */*argv*/[])
+int main(int argc, char *argv[])
 {
     // Retrieve the application version given in the Qt project file.
     std::string appVersion = APP_VERSION;
-    std::cout<<appVersion;
+    std::string appDate = APP_DATE;
+    std::cout<<"Application version: "<<appVersion
+             <<", date: "<<appDate;
+
+    QApplication app(argc, argv);
+
+    // Setting the Application version
+    app.setApplicationVersion(APP_VERSION);
+
+    std::cout<<"\nThe application version returned through global qApp is "
+             <<qApp->applicationVersion().toStdString();
 
     return 0;
 }

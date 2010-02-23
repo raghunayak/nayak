@@ -9,13 +9,14 @@
 #
 ################################################################################
 
-QT       -= gui
+QT       += gui
 
 # The application version
 VERSION = 1.0
+DATE = "28-Nov-2009"
 
 # Define the preprocessor macro to get the application version in our application.
-DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DEFINES += APP_VERSION=\\\"$$VERSION\\\" APP_DATE=\\\"$$DATE\\\"
 
 TARGET = AppVersion
 CONFIG   += console
