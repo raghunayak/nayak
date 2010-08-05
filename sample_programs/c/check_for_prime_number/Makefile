@@ -43,34 +43,42 @@ SOURCES       = is_prime_number.c
 OBJECTS       = is_prime_number.o
 DESTDIR       = 
 TARGET        = is_prime_number
-PREPROCESSEDFILE = is_prime_number.i
+PREPROCESSEDFILE = is_prime.i
 
 first: all
 ####### Implicit rules
 
 .SUFFIXES: .o .c .cpp .cc .cxx .C .i
 
-.cpp.o:
+%.o: %.cpp
 	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
-.cc.o:
+%.o: %.cc
 	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
-.cxx.o:
+%.o: %.cxx
 	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
-.C.o:
+%.o: %.C
 	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
-.c.o:
+%.o: %.c
 	$(ECHO) executing cpp
 	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
 	
 %.i: %.cpp
+	$(ECHO) executing cpp
+	$(CCC) -c -E $(CFLAGS) $< >$*.i
+	
+%.i: %.cc
+	$(ECHO) executing cpp
+	$(CCC) -c -E $(CFLAGS) $< >$*.i
+
+%.i: %.C
 	$(ECHO) executing cpp
 	$(CCC) -c -E $(CFLAGS) $< >$*.i
 
@@ -89,6 +97,7 @@ clean:
 	-$(DEL_FILE) $(OBJECTS)
 	-$(DEL_FILE) $(TARGET) 
 	-$(DEL_FILE) *~ core *.core
+	-$(DEL_FILE) $(PREPROCESSEDFILE)
 
 preprocess: $(PREPROCESSEDFILE)
 
