@@ -6,6 +6,7 @@
 ####### Compiler, tools and options
 
 CC            = gcc
+CCC           = g++
 CXX           = g++
 DEFINES       = 
 CFLAGS        = -pipe -O3 -Wall -W $(DEFINES)
@@ -43,7 +44,7 @@ SOURCES       = is_prime_number.c
 OBJECTS       = is_prime_number.o
 DESTDIR       = 
 TARGET        = is_prime_number
-PREPROCESSEDFILE = is_prime.i
+PREPROCESSEDFILE = is_prime_number.i
 
 first: all
 ####### Implicit rules
@@ -51,39 +52,30 @@ first: all
 .SUFFIXES: .o .c .cpp .cc .cxx .C .i
 
 %.o: %.cpp
-	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 %.o: %.cc
-	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 %.o: %.cxx
-	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 %.o: %.C
-	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 %.o: %.c
-	$(ECHO) executing cpp
 	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
 	
 %.i: %.cpp
-	$(ECHO) executing cpp
 	$(CCC) -c -E $(CFLAGS) $< >$*.i
 	
 %.i: %.cc
-	$(ECHO) executing cpp
 	$(CCC) -c -E $(CFLAGS) $< >$*.i
 
 %.i: %.C
-	$(ECHO) executing cpp
 	$(CCC) -c -E $(CFLAGS) $< >$*.i
 
 %.i: %.c
-	$(ECHO) executing cpp
 	$(CXX) -c -E $(CXXFLAGS) $< >$*.i
 
 ####### Build rules
@@ -101,13 +93,13 @@ clean:
 
 preprocess: $(PREPROCESSEDFILE)
 
+
 ####### Sub-libraries
 
 distclean: clean
 	-$(DEL_FILE) $(TARGET) 
 	-$(DEL_FILE) Makefile
 
-####### Compile
+####### Compile 
 
 ####### Install
-
