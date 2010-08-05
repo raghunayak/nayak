@@ -31,6 +31,7 @@ DEL_DIR       = rmdir
 MOVE          = mv -f
 CHK_DIR_EXISTS= test -d
 MKDIR         = mkdir -p
+ECHO          = echo
 
 ####### Output directory
 
@@ -42,26 +43,40 @@ SOURCES       = is_prime_number.c
 OBJECTS       = is_prime_number.o
 DESTDIR       = 
 TARGET        = is_prime_number
+PREPROCESSEDFILE = is_prime_number.i
 
 first: all
 ####### Implicit rules
 
-.SUFFIXES: .o .c .cpp .cc .cxx .C
+.SUFFIXES: .o .c .cpp .cc .cxx .C .i
 
 .cpp.o:
+	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 .cc.o:
+	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 .cxx.o:
+	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 .C.o:
+	$(ECHO) executing cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
 
 .c.o:
+	$(ECHO) executing cpp
 	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+	
+%.i: %.cpp
+	$(ECHO) executing cpp
+	$(CCC) -c -E $(CFLAGS) $< >$*.i
+
+%.i: %.c
+	$(ECHO) executing cpp
+	$(CXX) -c -E $(CXXFLAGS) $< >$*.i
 
 ####### Build rules
 
@@ -75,6 +90,7 @@ clean:
 	-$(DEL_FILE) $(TARGET) 
 	-$(DEL_FILE) *~ core *.core
 
+preprocess: $(PREPROCESSEDFILE)
 
 ####### Sub-libraries
 
