@@ -424,7 +424,7 @@ Names
 
       void setCount(size_t count);
 
-   9. Objective-C method names should follow the Cocoa naming guidelines — they should read like a phrase and each piece of the selector should start with a lowercase letter and use intercaps.
+   9. Objective-C method names should follow the Cocoa naming guidelines â€” they should read like a phrase and each piece of the selector should start with a lowercase letter and use intercaps.
   10. Enum members should user InterCaps with an initial capital letter.
   11. Prefer const to #define. Prefer inline functions to macros.
   12. #defined constants should use all uppercase names with words separated by underscores.
@@ -482,8 +482,8 @@ Other Punctuation
 
       MyOtherClass::MyOtherClass() : MySuperClass() {}
 
-   2. Pointer types in non-C++ code — Pointer types should be written with a space between the type and the * (so the * is adjacent to the following identifier if any).
-   3. Pointer and reference types in C++ code — Both pointer types and reference types should be written with no space between the type name and the * or &.
+   2. Pointer types in non-C++ code â€” Pointer types should be written with a space between the type and the * (so the * is adjacent to the following identifier if any).
+   3. Pointer and reference types in C++ code â€” Both pointer types and reference types should be written with no space between the type name and the * or &.
       Right:
 
       Image* SVGStyledElement::doSomething(PaintInfo& paintInfo)
