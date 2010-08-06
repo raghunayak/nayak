@@ -1,13 +1,21 @@
 coding_guidelines.txt
 
-Note: Please follow this strictly.
+Note:
+
+1. Please follow this strictly.
+2. This coding guideline document is based on Webkit coding standards.
+   Check http://webkit.org/coding/coding-style.html for more information.
+
+Following coding style document is formedbased on the coding style followed by Webkit project and Nokia Qt.
 
 C/C++ Coding Style Guidelines
 
 Indentation
 
-   1. Use spaces, not tabs. Tabs should only appear in files that require them for semantic meaning, like Makefiles.
-   2. The indent size is 4 spaces.
+   1. Use spaces, not tabs. Tabs should only appear in files that require them for semantic meaning, like in Makefiles.
+   2. The indentation size is 4 spaces.
+      Do not use 2 spaces or 8 spaces.
+
       Right:
 
       int main()
@@ -23,6 +31,7 @@ Indentation
       }
 
    3. In a header, code inside a namespace should be indented.
+
       Right:
 
       // Document.h
@@ -47,7 +56,8 @@ Indentation
 
       } // namespace WebCore
 
-   4. In an implementation file (files with the extension .cpp, .c or .mm), code inside a namespace should not be indented.
+   4. In an implementation file (files with the extension .cpp, .cc or .c), code inside a namespace should not be indented.
+
       Right:
 
       // Document.cpp
@@ -73,6 +83,8 @@ Indentation
       } // namespace WebCore
 
    5. A case label should line up with its switch statement. The case statement is indented.
+      Reason: To avoid un-necessary indentation.
+
       Right:
 
       switch (condition) {
@@ -96,6 +108,8 @@ Indentation
       }
 
    6. Boolean expressions at the same nesting level that span multiple lines should have their operators on the left side of the line instead of the right side.
+      Reason: Operators at the beginning of the statement makes them easy to read, especially when its a very long statement.
+
       Right:
 
       return attr->name() == srcAttr
@@ -111,6 +125,7 @@ Indentation
 Spacing
 
    1. Do not place spaces around unary operators.
+
       Right:
 
       i++;
@@ -120,6 +135,8 @@ Spacing
       i ++;
 
    2. Do place spaces around binary and ternary operators.
+      Reason: This improves the readability.
+
       Right:
 
       y = m * x + b;
@@ -135,6 +152,7 @@ Spacing
       return condition ? 1:0;
 
    3. Place spaces between control statements and their parentheses.
+
       Right:
 
       if (condition)
@@ -146,6 +164,8 @@ Spacing
           doIt();
 
    4. Do not place spaces between a function and its parentheses, or between a parenthesis and its content.
+      Reason: This rule will help us to easily distinguish function call and opeator expressions.
+
       Right:
 
       f(a, b);
@@ -158,6 +178,7 @@ Spacing
 Line breaking
 
    1. Each statement should get its own line.
+
       Right:
 
       x++;
@@ -171,6 +192,7 @@ Line breaking
       if (condition) doIt();
 
    2. An else statement should go on the same line as a preceding close brace.
+
       Right:
 
       if (condition) {
@@ -189,6 +211,7 @@ Line breaking
       }
 
    3. An else if statement should be written as an if statement when the prior if concludes with a return statement.
+
       Right:
 
       if (condition) {
@@ -211,6 +234,7 @@ Line breaking
 Braces
 
    1. Function definitions: place each brace on its own line.
+
       Right:
 
       int main()
@@ -225,6 +249,8 @@ Braces
       }
 
    2. Other braces: place the open brace on the line preceding the code block; place the close brace on its own line.
+      Reason: K&R
+
       Right:
 
       class MyClass {
@@ -247,6 +273,7 @@ Braces
       };
 
    3. One-line control clauses should not use braces
+
       Right:
 
       if (condition)
@@ -259,6 +286,7 @@ Braces
       }
 
    4. Control clauses without a body should use empty braces:
+
       Right:
 
       for ( ; current; current = current->next) { }
@@ -269,8 +297,8 @@ Braces
 
 Null, false and 0
 
-   1. In C++, the null pointer value should be written as 0. In C, it should be written as NULL. In Objective-C and Objective-C++, follow the guideline for C or C++, respectively, but use nil to represent a null Objective-C object.
-   2. C++ and C bool values should be written as true and false. Objective-C BOOL values should be written as YES and NO.
+   1. In C++, the null pointer value should be written as 0. In C, it should be written as NULL.
+   2. C++ and C bool values should be written as true and false.
    3. Tests for true/false, null/non-null, and zero/non-zero should all be done without equality comparisons.
       Right:
 
@@ -294,11 +322,10 @@ Null, false and 0
       if (count == 0)
           return;
 
-   4. In Objective-C, instance variables are initialized to zero automatically. Don't add explicit initializations to nil or NO in an init method.
-
 Names
 
-   1. Use CamelCase. Capitalize the first letter, including all letters in an acronym, in a class, struct, protocol, or namespace name. Lower-case the first letter, including all letters in an acronym, in a variable or function name.
+   1. Use CamelCase. Capitalize the first letter, including all letters in an acronym, in a class, struct, or protocol name. Lower-case the first letter, including all letters in an acronym, in a variable, namespace or function name.
+
       Right:
 
       struct Data;
@@ -314,6 +341,7 @@ Names
       String MIMEType();
 
    2. Use full words, except in the rare case where an abbreviation would be more canonical and easier to understand.
+
       Right:
 
       size_t characterSize;
